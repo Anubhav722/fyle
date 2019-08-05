@@ -7,5 +7,5 @@ class BankInfoSerializer(ModelSerializer):
     class Meta:
         model = BankInfo
         fields = (
-            "ifsc", "bank_id", "branch", "address", "city",
+            "id", "ifsc", "bank_id", "branch", "address", "city",
             "district", "state", "bank_name")
