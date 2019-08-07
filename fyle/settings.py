@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import dj_database_url
 from rsutils_django.core.env import env
 from django.utils.timezone import timedelta
 
@@ -111,14 +112,9 @@ WSGI_APPLICATION = 'fyle.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('HOST'),
-        'PORT': env('PORT'),
-    }
+    'default': dj_database_url.config(
+        engine="django.db.backends.postgresql_psycopg2"
+    )
 }
 
 
