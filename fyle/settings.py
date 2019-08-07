@@ -27,7 +27,7 @@ SECRET_KEY = 'qa=3wz6jmca8tn&=+%*9(wjl7c_b9b))islsweos=um8wms65w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fyle-deploy.herokuapp.com']
 
 
 # Application definition
@@ -51,17 +51,10 @@ CACHES = {'default':
 REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
-        # 'rest_framework_yaml.parsers.YAMLParser',
-        # 'rest_framework_csv.parsers.CSVParser',
-        # 'rest_framework_xml.parsers.XMLParser',
-
     ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.BrowsableAPIRenderer',
         'rest_framework.renderers.JSONRenderer',
-        # 'rest_framework_yaml.renderers.YAMLRenderer',
-        # 'rest_framework_csv.renderers.CSVRenderer',
-        # 'rest_framework_xml.renderers.XMLRenderer',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
