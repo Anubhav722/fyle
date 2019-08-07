@@ -39,15 +39,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'corsheaders',
     'bank',
-    'django_filters'
+    'rest_framework',
+    'django_filters',
 ]
 
 CACHES = {'default':
           {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'}}
 
 REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        # 'rest_framework_yaml.parsers.YAMLParser',
+        # 'rest_framework_csv.parsers.CSVParser',
+        # 'rest_framework_xml.parsers.XMLParser',
+
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        # 'rest_framework_yaml.renderers.YAMLRenderer',
+        # 'rest_framework_csv.renderers.CSVRenderer',
+        # 'rest_framework_xml.renderers.XMLRenderer',
+    ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
@@ -69,6 +84,8 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -107,7 +124,7 @@ DATABASES = {
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('DATABASE_PASSWORD'),
         'HOST': env('HOST'),
-        'PORT': '',
+        'PORT': env('PORT'),
     }
 }
 
@@ -149,3 +166,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# CORS STUFF
+CORS_ORIGIN_ALLOW_ALL = True
