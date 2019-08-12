@@ -19,3 +19,23 @@ curl -X GET \
   -H 'cache-control: no-cache' \
   -H 'postman-token: 5e76ebb0-4e54-0130-543b-ce2816283c2e'
 ```
+
+## API to fetch JWT Token
+
+```
+curl -X POST \
+  'https://fyle-deploy.herokuapp.com/api/token?format=json' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: d8336ae4-746c-4046-b77d-f327bad543f3' \
+  -d '{
+	"username": "anubhav",
+	"password": "A@123456789"
+}'
+```
+
+## API to refresh JWT Token
+
+```
+/api/token/refresh
+```
